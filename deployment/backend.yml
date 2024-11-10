@@ -21,7 +21,7 @@ pipelines:
                 - exec:
                     arguments:
                       - -l
-                    command: s
+                    command: ls
 
       - QA:
           fetch_materials: true
