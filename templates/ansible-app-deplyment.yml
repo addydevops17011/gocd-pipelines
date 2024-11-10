@@ -1,0 +1,29 @@
+format_version: 10
+pipelines:
+  ansible-app-deplyment:
+    group: Templates
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-a69cea3:
+        git: https://github.com/addydevops17011/ansible-expense
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    secure_variables:
+      SSH_PASSWORD: "AES:WNWEXGhFuraKQEz9hK6dzQ==:N0JDlXo3nAuiSVffdbstjA=="
+    stages:
+      - DEV:
+          fetch_materials: true
+          environment_variables:
+            env_name: dev
+          jobs:
+            ansible:
+              timeout: 0
+              tasks:
+                - exec:
+                    arguments:
+                      - run.sh
+                    command: bash
+
