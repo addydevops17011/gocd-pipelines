@@ -29,7 +29,7 @@ pipelines:
                       - -e
                       - env_name=dev
                       - -e
-                      - role_name=frontendbackend.yml
+                      - role_name=frontend
                       - expense.yml
                     command: ansible-playbook
 
