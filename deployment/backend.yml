@@ -21,7 +21,7 @@ pipelines:
                 - exec:
                     arguments:
                       - -i
-                      - backend-dev.doubtfree.online
+                      - backend-dev.doubtfree.online,
                       - -e
                       - ansible_user=ec2-user
                       - -e
