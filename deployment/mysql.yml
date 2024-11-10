@@ -1,0 +1,35 @@
+format_version: 10
+pipelines:
+  mysql:
+    group: APP-deployments
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-a69cea3:
+        git: https://github.com/addydevops17011/ansible-expense
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    stages:
+      - DEV:
+          fetch_materials: true
+          jobs:
+            ansible:
+              timeout: 0
+              tasks:
+                - exec:
+                    arguments:
+                      - -i
+                      - mysql-dev.doubtfree.online,
+                      - -e
+                      - ansible_user=ec2-user
+                      - -e
+                      - ansible_password=DevOps321
+                      - -e
+                      - env_name=dev
+                      - -e
+                      - role_name=mysql
+                      - expense.yml
+                    command: ansible-playbook
+
