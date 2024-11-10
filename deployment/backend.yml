@@ -20,17 +20,16 @@ pipelines:
               tasks:
                 - exec:
                     arguments:
-                      - -l
-                    command: ls
+                      - -i
+                      - backend-dev.doubtfree.online
+                      - -e
+                      - ansible_user=ec2-user
+                      - -e
+                      - ansible_password=DevOps321
+                      - -e
+                      - env_name=dev
+                      - -e
+                      - role_name=backend
+                      - expense.yml
+                    command: ansible-playbook
 
-      - QA:
-          fetch_materials: true
-          jobs:
-            ansible:
-              timeout: 0
-              tasks:
-                - exec:
-                    arguments:
-                      - -l
-                    command: ls
-                    run_if: passed
